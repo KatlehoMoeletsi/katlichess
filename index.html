@@ -3,19 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responsive Chess Board with Images</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Chess with Moving Image</title>
+    <style>
+       #moving-image-left {
+    position: absolute;
+    top: -20%;
+    left: 5%; /* Adjust to fit left side */
+    width: 10vw; /* 10% of the viewport width */
+    max-width: 80px; /* Cap the size for larger screens */
+    height: auto;
+    animation: moveDownLeft 5s linear infinite; /* Loop animation */
+}
+
+/* Moving image animation for the right side */
+#moving-image-right {
+    position: absolute;
+    top: -20%;
+    right: 5%; /* Adjust to fit right side */
+    width: 10vw; /* 10% of the viewport width */
+    max-width: 80px; /* Cap the size for larger screens */
+    height: auto;
+    animation: moveDownRight 5s linear infinite;
+}
+
+/* Keyframes for left-side animation */
+@keyframes moveDownLeft {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Keyframes for right-side animation */
+@keyframes moveDownRight {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(100vh);
+    }
+}
+
+/* Ensure chessboard is responsive */
+#chess-board {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); /* Equal columns */
+    grid-template-rows: repeat(8, 1fr);   /* Equal rows */
+    width: 90vw;
+    max-width: 480px;
+    aspect-ratio: 1 / 1;
+    border: 2px solid black;
+    margin: auto;
+}
+
+/* Square styles */
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(2vw + 10px); /* Responsive font size */
+}
+
+.white {
+    background-color: #eee;
+}
+
+.black {
+    background-color: #333;
+    color: white;
+}
+    </style>
 </head>
 <body>
-    <!-- Left moving image -->
-    <img id="moving-image-left" src="unnamed (8)" alt="Left Animation">
-
-    <!-- Chessboard -->
+    <div id="rain-container"></div>
     <div id="chess-board"></div>
-
-    <!-- Right moving image -->
-    <img id="moving-image-right" src="unnamed (8)" alt="Right Animation">
-
+   
+    <img id="moving-image-right" src="unnamed (8).jpg" alt="Moving Image">
+    <img id="moving-image-left" src="unnamed (8).jpg" alt="Moving Image">
     <script src="chess.js"></script>
+   
 </body>
 </html>
